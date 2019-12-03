@@ -2,6 +2,7 @@ import re
 
 from nltk import WordNetLemmatizer, pos_tag, word_tokenize
 
+from nltk.corpus import wordnet
 
 def ngram_generator(s, n):
     if (len(s.split()) < n):
@@ -18,7 +19,7 @@ def ngram_generator(s, n):
 
     # Stemming and Lemmatizing
     lemmatizer = WordNetLemmatizer()
-    tagged = nltk.pos_tag(token)
+    tagged = pos_tag(token)
     token = []
     for word, tag in tagged:
         wntag = get_wordnet_pos(tag)
@@ -33,3 +34,19 @@ def ngram_generator(s, n):
     # Concatentate the tokens into ngrams and return
     ngrams = zip(*[token[i:] for i in range(n)])
     return [" ".join(ngram) for ngram in ngrams]
+
+def get_wordnet_pos(tag):
+    if tag.startswith('J'):
+        return wordnet.ADJ
+    elif tag.startswith('V'):
+        return wordnet.VERB
+    elif tag.startswith('N'):
+        return wordnet.NOUN
+    elif tag.startswith('R'):
+        return wordnet.ADV
+    else:
+        return None
+
+ngram = ngram_generator('I am a student working in the library', 3)
+print(ngram)
+input('press enter')
