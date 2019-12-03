@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from ngram_generator import ngram_generator
+from collections import defaultdict
 import re
 import math
 
