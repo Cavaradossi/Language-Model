@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 11 08:10:22 2019
-
-@author: Mr.relu
-"""
 from ngram_generator import ngram_generator
-from collections import defaultdict
-from functools import reduce 
 import re
 import math
 
@@ -26,9 +19,6 @@ def main():
     get_dic()
     cal_probability()
     num_dic = len(dictionary)
-    
-#    joblib.dump(postings, 'uni_gram_postings.pkl')
-#    postings = joblib.load('uni_gram_postings.pkl')
     
     print("Total number of train words:"+str(total_num))
     print("number of dictionary:"+str(num_dic))
@@ -66,32 +56,12 @@ def get_dic():
 def line_token(document):
     return ngram_generator(document, 1)
 
-'''
-def line_token(document):
-
-    document=document.lower()
-    document = document.replace('__eou__','') #将__eou__删除  
-    #document=re.sub(r'', " ",document)
-    #document=re.sub(r"\W|\d|_|\s{2,}"," ",document)#\W只保留数字字母下划线。\d匹配任意数字 \s{2，}匹配两个以上的空格
-    document=re.sub(r"\W|\d|\s{2,}"," ",document)#保留数字和下划线
-    terms=TextBlob(document).words.singularize()
-    result=[]
-    for word in terms:
-        expected_str = Word(word)
-        expected_str = expected_str.lemmatize("v")#还原动词原型
-        result.append(expected_str)
-    return result     
-    '''
-
 def cal_probability():
     global postings,total_num
     
     for term in postings:
         postings[term][1] = postings[term][0]/total_num
-        
-
-
-
+       
 def get_pw_of_absent(newTerm):
     #根据在测试集中新出现的词来更新语料库的词概率信息（加 1 法）
     
@@ -127,25 +97,6 @@ def test():
     return PPL
 '''
 
-"""
-#    document=re.sub(r"\W|\d|\s{2,}"," ",document)#保留字母下划线
-#    document = document.replace('__eou__','\t') #将__eou__替换为分割符号
-#    sentences = document.split('\t')
-#    
-#    for sen in sentences:
-#        terms=TextBlob(sen).words.singularize()
-#        
-#        for word in terms:
-#            expected_str = Word(word)
-#            expected_str = expected_str.lemmatize("v")#还原动词原型
-#            #加 1 法平滑
-#            if expected_str in postings:
-#                log_PT += math.log(postings[expected_str][1])
-#            else:
-#                update_postings_dic(expected_str)
-#                log_PT += math.log(postings[expected_str][1])
-#        print(sen)
-"""  
 if __name__ == "__main__":
     main()
     print(dictionary)
