@@ -1,0 +1,231 @@
+Deep learning (also known as deep structured learning or hierarchical learning) is part of a broader family of machine learning methods based on learning data representations, as opposed to task-specific algorithms. Learning can be supervised, partially supervised or unsupervised.
+
+Some representations are loosely based on interpretation of information processing and communication patterns in a biological nervous system, such as neural coding that attempts to define a relationship between various stimuli and associated neuronal responses in the brain. Research attempts to create efficient systems to learn these representations from large-scale, unlabeled data sets.
+
+Deep learning architectures such as deep neural networks, deep belief networks and recurrent neural networks have been applied to fields including computer vision, speech recognition, natural language processing, audio recognition, social network filtering, machine translation and bioinformatics where they produced results comparable to and in some cases superior to human experts.
+
+Deep learning is a class of machine learning algorithms that:
+
+use a cascade of many layers of nonlinear processing units for feature extraction and transformation. Each successive layer uses the output from the previous layer as input. The algorithms may be supervised or unsupervised and applications include pattern analysis (unsupervised) and classification (supervised).
+are based on the (unsupervised) learning of multiple levels of features or representations of the data. Higher level features are derived from lower level features to form a hierarchical representation.
+are part of the broader machine learning field of learning representations of data.
+learn multiple levels of representations that correspond to different levels of abstraction; the levels form a hierarchy of concepts.
+These definitions have in common (1) multiple layers of nonlinear processing units and (2) the supervised or unsupervised learning of feature representations in each layer, with the layers forming a hierarchy from low-level to high-level features.[8](p200) The composition of a layer of nonlinear processing units used in a deep learning algorithm depends on the problem to be solved. Layers that have been used in deep learning include hidden layers of an artificial neural network and sets of complicated propositional formulas.[9] They may also include latent variables organized layer-wise in deep generative models such as the nodes in Deep Belief Networks and Deep Boltzmann Machines.
+
+Credit assignment path 每 A chain of transformations from input to output. CAPs describe potentially causal connections between input and output.
+Cap depth 每 for a feedforward neural network, the depth of the CAPs (thus of the network) is the number of hidden layers plus one (as the output layer is also parameterized), but for recurrent neural networks, in which a signal may propagate through a layer more than once, the CAP depth is potentially unlimited.
+Deep/shallow 每 No universally agreed upon threshold of depth divides shallow learning from deep learning, but most researchers in the field agree that deep learning has multiple nonlinear layers.
+
+The Bone Wars were rivalries between paleontologists, mainly Edward Drinker Cope and Othniel Charles Marsh (pictured), that led to a surge of fossil discoveries during the Gilded Age of American history. Cope, of the Academy of Natural Sciences in Philadelphia, and Marsh, of the Peabody Museum of Natural History at Yale, competed using underhanded methods, resorting to bribery, theft, destruction of bones, and mutual attacks in scientific publications. They sought fossils in rich bone beds in Colorado, Nebraska, and Wyoming. From 1877 to 1892, they used their wealth and influence to finance their own expeditions and to procure services and dinosaur bones from fossil hunters. Cope and Marsh were financially and socially ruined by their attempts to disgrace each other, but their contributions to science and the field of paleontology, including many unopened boxes of fossils found after their deaths, were massive. Their efforts led to many new descriptions of dinosaur species, of which 32 remain valid today. The Bone Wars shed light on prehistoric life and sparked the public's interest in dinosaurs, leading to continued fossil excavation in North America in the decades to follow. (Full article...)
+By 1978, Radio City had lost its glamour, and the owners of Rockefeller Center decided to demolish the aging hall.
+In time he was entirely forgotten, many of his buildings were demolished, others insensitively altered.
+He repeatedly calls on his followers to embrace martyrdom since "the walls of oppression and humiliation cannot be demolished except in a rain of bullets."
+Other than one civilian casualty, the operation seemed completely successful: the intelligence headquarters was demolished.
+At the Tennessee Valley Authority's (TVA's) 700 MWe Paradise Unit 2, it was necessary to demolish the existing ESP with the unit on line.
+TVA installed a construction bypass to send gas from the air preheater outlet directly to the FGD, while the ESP was being demolished and the SCR reactor erected in its place.
+38 Although, in this case the equipment did not have to be erected adjacent to an operating boiler, the erection included demolishing and erecting a complete boiler island and demolishing the existing electrostatic precipitator.
+38 Although, in this case the equipment did not have to be erected adjacent to an operating boiler, the erection included demolishing and erecting a complete boiler island and demolishing the existing electrostatic precipitator.
+Residents and former residents of a Lincoln Place mobile home park that is being demolished to make way for a city-owned community center are demanding that the government compensate them for lost trailers and relocation costs.
+Raimondi has been evicting residents and demolishing trailers that are left behind in order to meet a city requirement that he present a clean piece of land with no environmental concerns.
+As soon as she moved out, the mobile home was demolished, the suit said.
+But Franklin and Wilkins soon demolished it.
+The temple was demolished and a vast, Classical-style church was built around Golgotha (the hill where Jesus＊s crucifixion was believed to have taken place).
+He bought several Strip properties 〞 the Silver Slipper and Castaways among them 〞 and demolished them to make way for a new kind of resort 〞 Mirage 〞 which became an instant success.
+It was demolished in 1817.
+Stones from the demolished Bastille prison were used for its support structure 〞 galling for Royalists, since it had originally been named Pont Louis XVI.
+So great is the pressure on the available land that most of Hong Kong＊s colonial architectural heritage has been demolished and replaced by new skyscrapers.
+These gardens used to belong to the governor＊s mountain lodge, but the building was demolished by the Japanese during the occupation of Hong Kong.
+This was once the scene of a famous misdevelopment plan, when a 600-room luxury hotel had to be demolished just as it was ready to open for business, since it had mistakenly been built directly on the flight path to Ibiza airport.
+With no skilled Muslim labor at his disposal, Qutb called on local craftsmen to build the mosque from the ruins of 27 Hindu and Jain temples, demolished by their own elephants.
+The present city walls that make the Old City so impressive and give it architectural coherence were built in 1538, on the foundations of ancient walls that had been demolished at the end of the Crusades.
+When that hope was realized in June 1967, old buildings that had crowded the Wall were demolished and a wide plaza was constructed for the hundreds of worshippers who arrived daily.
+Much of this historic structure was demolished by storms in 1983, prompting restoration to its original look.
+In 1858 that building was demolished, making away for a second and later a third structure (the one that still stands), which was completed in 1874.
+The fortress＊s principal building, which may have been Henry＊s headquarters, has been demolished.
+Where developers saw the opportunity to demolish derelict canal houses and warehouses, the people fought (sometimes literally) to save what they considered their heritage.
+The price of land was soaring, and developers could make a tidy profit by demolishing them and replacing them with something modern.
+This was demolished when the metro was constructed in 1911.
+This landscape is no accident or happy coincidence but a living museum created in 1960, which has brought together a number of farmhouses, windmills, dairies, and barns?〞?real agricultural buildings which would have been demolished had they not been relocated here.
+A triangle of sand?〞?the area now bordered by the Passeig Nacional, the Avinguda d＊Ic角ria, and the beachfront Passeig Mar赤tim?〞?first housed dispossessed families when the Ribera district was demolished to make way for the Ciutadella fortress.
+The district between La Rambla and the Ronda de Sant Antoni, once the line of the city wall, is El Raval, a neighborhood being rapidly renovated, with many old buildings demolished to create open spaces.
+Most of the other gates fell when the wall was demolished during the modernization of Beijing in 1958每1959.
+A short stroll leads to Friedrichstra?e, where over 100,000 m of GDR architectural monstrosity have been demolished and replaced by a very elegant development of designer shops, offices, and apartments.
+By the time the Russians ?nally took Budapest, three-quarters of its buildings were demolished and the Hungarian death toll in the war came to about half a million.
+Most of the ugly old warehouses have been demolished along the Vieux Port at the foot of Place Jacques-Cartier.
+During the latter years of Long＊s reign, the French Quarter had reached a nadir, with many fine buildings in a state of near collapse?〞?some were even demolished to make parking lots.
+The Sacr谷-C?ur＊s architect, Paul Abadie, wanted to demolish St-Pierre, but he was overruled, and it was restored ※as a riposte to the Sacr谷-C?ur.§
+On the dock, Tina and her husband, Harry Evans, who was the person who hired me as an editor at Random House and who once demolished me in pingpong in between swimming laps at his health club--and I'm a pretty good ping pong player--were spotted, saying hello or goodbye to this luminary or that one.
+The NYT fronts, and the WP and LAT stuff, word that a powerful car bomb demolished an apartment building in Dagestan housing Russian counterinsurgency troops and their families.
+The findings became famous when they landed on the cover of ＃ Newsweek . Much of Backlash is dedicated to demolishing both the Bloom-Craig research itself and Newsweek 's further distortion of it-most famously, Newsweek's preposterous claim that a single gal was more likely to be killed by a terrorist than to find a mate.
+Someday, someone will demolish the myth of Carter's alleged brilliance.
+In a long review-essay, Wieseltier demolished West's stature as a "public intellectual," portraying him as a pretentious egomaniac, a mass of contradictions, and a superficial thinker who dresses up diluted Marxism in incomprehensible phraseology.
+In the past two years, the Czech president has been widowed, lost a lung to illness, married an unpopular actress, engaged in a nasty real-estate feud with his brother, and watched rival politicians demolish his vision of Czech society.
+Plaudits for the reconstruction of the fabled Elizabethan theater, which was demolished in 1644.
+The Israeli newspaper Ha'aretz led Thursday with an exclusive report saying that the latest draft of the U.S. peace initiative required that Israel stop expanding its West Bank settlements and "refrain from demolishing 1800 [Palestinian] homes currently slated for demolition."
+Where else does a pundit face one or more people dedicated to demolishing his or her arguments on the spot and making him or her look like a fool?
+Let us pause for a moment to demolish two of the splashier rumors about White House fornication.
+He demolished, in print, rivals and competitors.
+The seductive and corrupting film noir downtowns featured in so many admired cheap second features might as well all have been demolished, along with the long-gone Bijous and Palaces where these films first played.
+Other sports sites pale next to SportsZone, but they still demolish print and TV.
+At a Washington retirement home, the president helped demolish a wall to make room for a health clinic, an activity meant, in some weirdly elliptical way, to commemorate the life of the Rev.
+Even though Linux is supposed to demolish Microsoft, the Microsoft Helpdesk, which provides computer assistance to its employees, was surprisingly helpful.
+Its study has been pretty well demolished by the GAO's actuaries and by a counterstudy by the Center on Budget and Policy Priorities, a liberal think tank.
+In the New Yorker version, a precocious child surveys her friend's demolished sand castle.
+Good reviews for this corny Capra-esque Australian comedy about a working-class family's fight to keep its precious but hilariously tacky home from being demolished for an airstrip.
+Saga , Boutros-Ghali asserts that the wily secretary of state sought to unseat him "with determination, letting pass no opportunity to demolish my authority and tarnish my image all the while showing a serene face, wearing a friendly smile and repeating expressions of friendships and admiration through the poutiest ruby lips I have ever beheld.
+but the easiest thing in the world to write is a villain you get the audience so involved in hating that you scream inside for the hero to demolish him.
+In its editorial, the FT praised the judge for his "sophisticated grasp of the workings of the computer industry" and said he had successfully demolished most of Bill Gates' arguments.
+A sidebar notes that controversy remains over the Mars meteorite that crashed into Antarctica about 11,000 years ago: While scientists have demolished most of the evidence that the meteorite contained living creatures, they cannot explain why the meteorite contains a molecule that on Earth is only produced by biological processes.
+The protesters focus on "stability" and worry that unfettered trade will demolish it.
+You don't need to play Mike Wallace and demolish Leuchter on camera.
+Proposals to demolish this street and restore the unity of the whole archaeological zone from the Capitoline Hill to the Colosseum are often in the news.
+And I must, or rather, want to say, that one of the prime reasons for my enjoying Mr. Cochrane's article is that he demolished the ※anti-empathy§ argument by using logic and facts.
+The Wal-Mart strategy required and fostered the development of a company-wide computer system to track incoming and outgoing shipments to the various stores.
+In Angela and Tom＊s case, sandwiching concentrated time with Victor and Jeannine between work and other obligations, which often took precedence over family rituals, meant that routines that signal parental caring and that are major sources of development went by the wayside.
+The new approaches are numerous〞some more concerned with motor skills, others with cognitive competencies, and still others with emotional and social development.
+How can adults build interdependent relationships with children that foster the development of culturally meaningful skills and mature, autonomous behavior?
+the zone of proximal development
+Is learning and development affected if the father becomes less involved or absent after a divorce?
+It was in his book, With His Pistol in His Hand: A Border Ballad and Its Hero, that Paredes proposed his theory of the development of Chicano folklore through a process of cultural conflict generated by the invasion of Anglo culture and values into south Texas in the 1800s.
+Both these developments, in turn, placed a premium on planning the next generation of satellite systems, the cost of which put great pressure on the rest of the intelligence budget.
+The web pages were developed using JavaServer Page (JSP) technology, because of its rapid development and easy maintainability qualities in development of dynamically-generated web pages and takes advantage of the java technology provided by the Apache Tomcat server http://jakarta.apache.org/tomcat.
+Rate of development
+As is the case in wing cells the distal accumulation of Fz did not appear to influence lateral development in an
+Examination of the stability of countin mRNA indicated that it was turned over more rapidly in BS153 cells during early development.
+Diapausing embryos of the orthopteran Austroicetes cruciata undergo slow development for the first two months of diapause, before entering a resting stage [ 24 ] . Similarly, caterpillars of Cirphus unipunctata and Laphygma exigua continue to feed and develop during diapause, albeit at a much-reduced rate [ 25 ] , and caterpillars of the corn-stalk borer Sesamia nonagriodes undergo non-stationary moults during diapause [ 26 ] . These examples hint that the expression of diapause-controlled dormancy may vary between species [ 2 ] . Consequently, diapause could be considered extreme regulation of developmental rate, rather than a shutting down of morphological development.
+To determine the influence of temperature on the progression of development we stored the eggs under three temperature regimes, all with the same 13L:11D photoperiod: (1) 4～C in the light and 0～C in the dark; (2) constant 10～C; (3) constant 16～C.
+The right singular vectors that match our preconception of a grain filling pattern of expression, for example, low expression during panicle development and increasing expression during grain development, were identified after A was decomposed.
+A significance of the results is that development of microsatellite markers is important not only for peanut researchers but also for peanut industry as the paucity of DNA markers in cultivated peanut has so far precluded detailed genetic research on this crop.
+Guideline development
+When the interaction was present, there was no effect of scale at high food abundance, but when food abundance was low, container size affected male and female development time and mass of males (Figs.
+This time frame for development of hypertrophy is similar to previous findings with iron or copper deficiency [ 14 15 16 17 40 43 ] .
+, carteolol, had normal calcium cycling, normal myocardial energetics,normal 汕 1 receptor density as well as regression of myocytehypertrophy and reduced connective tissue content [ 18 ] . Furthermore, administration of carteolol hasbeen reported to prevent the development of virally induced cardiomyopathyin a murine model [ 25 ] . In a canine modelwith left ventricular dysfunction produced by multiple sequentialintracoronary microembolizations, long term treatment with metoprolol,a 汕 1 -selective blocker, has been reported to preventthe progression of LV systolic dysfunction and LV chamber dilatation [ 26 ] . Similarly, our present findings onthe effect of carvedilol indicated improvement of left ventricularfunction and smaller LV volumes.
+One of the molecules presented here constitute a good framework for the development of a novel series of RAR ligands very different from all structures described so far.
+While the CASP experiments provide for an environment where rapid testing of ideas is possible in a rigourous manner, a lot of the development is ad hoc, guided by intuition, and not all parameter choices are explored thoroughly.
+Because folliculogenesis in the murine proceeds to the preovulatory stage in the absence of BMP-6 [ 30 ] , BMP-15 [ 15 ] , and BMPR-IB [ 31 ] , one can assume that the marked increases in these regulatory molecules are not essential for the development of a second layer of GC.
+The development of RAD only in those patients with severe testicular dysfunction suggests that such dysfunction is one endogenous factor that predisposes to the development of RAD.
+It is hoped that using a 'master switch gene' will result in more stable vessels, because the processes by which they are formed would resemble more closely those of normal vessel development.
+We report several noteworthy observations based on our initial data, which provide a glimpse of the diversity of gene expression and the utility that will derive from a complete atlas of gene-expression patterns during Drosophila development.
+Profiling has been used to gain important insights into processes such as development, responses to environmental perturbations, gene mutation, pathogen and host response, and cancer [ 8, 9, 10, 11, 12, 13, 14].
+Studies using knockout mice for each of these isoforms [ 9, 10, 11, 12] suggest that eNOS-derived NO is important in modulating basal pulmonary vascular tone, as well as in attenuating the development of pulmonary hypertension.
+Study or Development of Coordinated Regional or Statewide Intake, Advice, Referral and Brief Services System.
+In this regard, agencies must continually (1) explore and assess information security risks to business operations, (2) determine what policies, standards, and controls are worth implementing to reduce these risks, (3) promote awareness and understanding among program managers, computer users, and systems development staff, and
+International Capital Markets: Developments, Prospects, and Key Policy Issues.
+First, they used an evolutionary approach to product development by establishing timephased plans to develop a new product in increments based on technologies and resources achievable now and later.
+DOD changed its acquisition policy to emphasize evolutionary acquisition and establish separate integration and demonstration phases in the product development process.
+Some of the documents required under different development approaches may differ.
+RESEARCH AND DEVELOPMENT -Federal investment in research and development refers to those expenses incurred in support of the search for new or refined knowledge and ideas and for the application or use of such knowledge and ideas for the development of new or improved products and processes with the expectation of maintaining or increasing national economic productive capacity or yielding other future benefits.
+Increased funding to the most productive scientists from the national science development programs might have been an important stimulus.
+For simplicity, I have described only the most common of the huge variety of very different scale insect genetic systems and modes of bacteriome development (Tremblay 1977, 1990; Nur 1980).
+The upshot of these developments is that copyright holders can now permit a spectrum of uses of a paper by prospective researchers, anthologizers, archivists, teachers, patients, policy makers, journalists, and other interested parties.
+They believe that energy use, in the form of metabolic rate, can be understood from the first principles of physics, and that metabolic rate can explain growth, development, population dynamics, molecular evolution, the flux of chemicals through the environment, and patterns of species diversity〞to name a few.
+How central will the regulation of P-TEFb be to cellular growth, proliferation, and differentiation, and what roles will it play in normal development and disease states?
+As a counterweight to the Singapore Chinese, he would bring in the North Borneo states of Sabah and Sarawak, granting them special privileges for their indigenous populations and funds for the development of their backward economies.
+Xcaret, or ※little inlet,§ is an award-winning example of a sustainable tourist development.
+In the 1970s, the development, along with the new airport, of the Club Maeva and Las Hadas resorts, with their striking Moorish design, began to bring in a steady flow of tourists.
+"Instead of feigning horror over this week's developments, the time is ripe for Mr. Clinton to accept the realities of another major member of the nuclear club, and use his visit to make sure its government knows that its future lies in forging closer ties to the democratic West," Beck concluded.
+USA Today , the Washington Post , and the New York Times all lead with the latest developments in the investigation of President Clinton's fund-raising.
+The process of development (or differentiation) is one of the least understood in biology.
+Those of us who write screenplays for a living are always perplexed at what leaky logic vessels most movies turn out to be, given the endless development process that takes place before production begins.
+The United States should limit technology transfers, increase spying on Beijing, strengthen our military alliances with China's neighbors (notably Japan and Korea), and stall China's weapons development as much as we peaceably can.
+(The only circumstance in which he would need to seek the consent of other landowners in the development would be if he wanted to petition to change the restrictions or permit an exception to them.)
+In the last several years, the business and corporate community has recognized that the positive development of youth is directly related to the development of a competent workforce.
+Although these changes have provided strong motivation for increased channel coordination, the development and implementation of key facilitating technologies〞like bar codes, the later spread of EDI, and automated distribution centers〞have been the real movers here.
+Chapters 3 through 5 analyze developments in the retail sector.
+After this introduction, Chapter 2 (※The Past as Prologue§) offers a brief history of recent technological and human resource developments in retailing, apparel production〞including the role of jobbers, contractors, and manufacturers〞and textile enterprises.
+Although these developments are very much a work in progress, information-integrated channels of production and distribution are emerging.
+The developments reported here offer a prototype of the new links among manufacturers, other suppliers, retailers, and consumers.
+This stream of general debate, however, is seldom related to a detailed study or analysis of the impact of such developments on the U.S. textile or apparel industries.
+But the longer term viability of American textile centers will depend on the development of infrastructures capable of supporting advanced textile production in countries close to the U.S. market, such as Mexico and elsewhere in Latin America.
+Adoption of just-in-time inventory management by manufacturers also represents a significant development, since changes in inventories have often been an important source of business-cycle fluctuations.
+But these initiatives are still at an early stage of development.
+Finally, the central role played by retailers in development and operation of the channel points to the fact that any measure〞whether taken by the government, through voluntary compliance programs or via collective bargaining〞must include their participation and support.
+Now point-of-sales information provides retailers with reliable information on market developments and hence gives them more leverage in dealing with direct suppliers and others further from ultimate consumers.
+A number of developments, many linked to issues we have discussed, indicate both the potential and limitations of electronic retailing.
+47 Thus, although Internet retailing will certainly grow as a channel of distribution, the most essential longer term developments will involve the expansion of lean retailing principles to a wider and wider variety of goods sold by a decreasing number of major retailers.
+In a related vein, the future of domestic producers also relies on their development of capabilities for supplying fashion products on a replenishment basis.
+Once again, the development of Web sites to undertake some of these connections represents an important first step in this direction.
+His story underscores the international role of textiles and apparel, their impetus in national economic development, and their place in conflicts over domestic production and imports〞a theme that recurs throughout U.S. history.
+This brief historical survey highlights not only the crucial developments that still undergird these industries but also the systems and work practices from an earlier era that no longer match today＊s competitive requirements.
+Other factors drove the development of mass retail as well.
+Only in the 1980s, with the development of another system of mass distribution that includes new technology, new management methods, and new links to manufacturing〞lean retailing〞did the role of the buyer significantly diminish.
+Development of the Progressive Bundle System
+The dominance of PBS affects current developments in apparel manufacturing and employee management for two reasons.
+Further, the knitting machine has been a key development in manufacturing technology.
+The creation of a national highway system in the 1950s further fostered the development of mass retailing by opening vast new spaces in suburban malls.
+These store-level investments were accompanied by major capital investments in central computer processing capacities, continuing development of store- and corporate-level software systems, and improvements in distribution operations.
+Other development applications allow designers to begin with an actual garment and make appropriate changes to achieve the desired design or construction modifications.
+In my three decades of teaching university courses in child development, I have come to know thousands of students, many of whom were parents or who became parents soon after completing my class.
+As a byproduct of those experiences, parents repeatedly approached me with concerns about how to foster their child＊s development in the early years.
+At an even more fundamental level, contemporary parents have begun to doubt their own ecacy in their children＊s development.
+Second, information about child development disseminated to parents is increasingly voluminous but at the same time contradictory.
+In view of these diculties, it is little wonder that so many American parents express a sense of powerlessness and inadequacy when it comes to aecting their children＊s development.
+3 An obvious solution to reconciling parents＊ employment needs with young children＊s rearing needs is to make high-quality, nonparental care, with characteristics known to promote healthy psychological development, widely available and aordable.
+In a recent survey of parents whose children were enrolled in several hundred randomly chosen child-care centers across four states, over 90 percent believed that their preschoolers＊ experiences were far better than experts in early childhood development judged those experiences to be.
+8 Instead, positive, supportive parenting that endured, even when it marked a change from an early period of parental retreat or negative interaction, was linked to favorable child development, including persistence in problem solving, high self-esteem, socially skilled behavior, closer friendships, and better peer relationships.
+Although the precise extent of family每work con?ict in American culture is not clear, its presence and detrimental impact on parent-child interaction and children＊s development are well founded.
+Studies carried out during the 1970s and 1980s on the relationship of maternal employment to children＊s development revealed many positive outcomes〞higher self-esteem, better grades in school, more positive family and peer relations, and less gender-stereotyped beliefs.
+17 But repeatedly, eective parenting mediated these favorable developments.
+When employed parents spend generous amounts of time engaged with their child, they safeguard the child＊s development.
+Probably because it reduces work overload, part-time maternal employment is associated with better academic and social development than is full-time employment.
+Precious few of these parenting manuals are grounded in the explosion of contemporary research on child development that is of signi?cant applied value.
+27 The roots of these polarized perspectives can be found in centuries-old, dramatically opposing philosophies about the nature of children and child development.
+The behaviorist presumption that development can be mechanically engineered by social input, guaranteeing brighter, socially more mature children, is not borne out by the evidence.
+In the tradition of Rousseau, the psychoanalysts argued that powerful biological forces channel development through four psychosexual stages.
+Swiss biologist Jean Piaget, twentieth-century giant of cognitive development, proposed a theory in which an intrinsically motivated child acts on the world, noticing discrepancies between the environment and inner structures, or ways of thinking.
+In contrast to the behaviorist emphasis on adult tutoring, Piaget believed that since development follows a natural, internally controlled stage sequence, what comes from within the child is paramount in guiding cognitive change.
+Piaget＊s contribution to the ?eld of child development is enormous.
+Especially important, Piaget convinced the academic community〞as well as many parents and teachers〞that children are active contributors to their own development, have their own ways of understanding the world, and must be developmentally ready if teaching is to be successful.
+Rather than tracking how well pupils keep pace with norms, or the average performance of same-age peers, open-classroom teachers evaluate children on an individual basis〞in relation to their own prior development.
+As our discussion already suggests, a central Piagetian tenet is that it is foolhardy to try to speed up development.
+Because Piaget stressed the supremacy of children＊s engagement with their surroundings over adult teaching, parents＊ and teachers＊ contributions to development are severely reduced relative to the child＊s.
+37 This, along with the cross-cultural ?ndings just described, raises doubts about Piaget＊s assumption that discovery learning rather than adult teaching is the most eective way to foster development.
+As Damon＊s message suggests, in building an eective vision of child development and child rearing, neither the child＊s inner thoughts and feelings nor the role of adult guidance can be singularly extolled or wholeheartedly ignored.
+Today, sound theories and educational strategies exist that are neither adult- nor child-centered but, instead, portray both as participating actively, jointly, and inseparably in the process of development.
+On only one point is the popular parenting literature unanimous: the vital importance of getting development o to a good start during the preschool years.
+After decades of theoretical division and debate, a new, more complex view of child development is coalescing in the ?eld, supported by rapidly accumulating research evidence.
+The fragmented, polarized theories of the past are giving way to more equitable theories emphasizing that the child and the social environment interact and that the contributions of each to development cannot be separated and weighted in a simplistic, one-sided manner.
+A second step is an appreciation of the multiplicity of factors that contribute to development〞an understanding that spells out parents＊ vital role yet clari?es how it joins with other forces to aect children＊s development and well-being.
+child development: a new consensus
+At the dawn of a new millennium, a fresh set of theories of child development has blossomed.
+Many Factors Contribute to Development
+These elements include the child＊s heredity and biological constitution; the people and objects in the child＊s everyday settings of home, child-care center, school, and neighborhood; community resources for child rearing (such as family-friendly workplace policies and high-quality, aordable child care); and cultural values and customs related to child development and education.
+A common human genetic heritage and basic regularities in children＊s physical and social environments yield certain universal, broad outlines of development.
+Within this dynamic system in which inner and outer forces jointly engender development, each contributing factor in?uences〞and is in?uenced by〞the others.
+brain development.
+How does early experience join with biology to aect brain development?
+Notice how, for the biological side of brain development to go forward, appropriate stimulation is essential while formation of neural connections is at its peak.
+Because of rapid brain growth and gradual decline in brain plasticity, the ?rst 5 to 8 years of life are regarded as a sensitive phase of development in which appropriate stimulation is necessary for children to reach their full genetic potential.
+In Burton White and Robert Held＊s classic study of the impact of early stimulation on development, young babies in a barren institution given a moderate amount of stimulation tailored to their ability to handle it〞at ?rst, a few simple designs on the side of their crib and later, a fancy mobile〞reached for and explored objects six weeks earlier than did infants given nothing to look at.
+Our rapidly expanding knowledge base on brain development and children＊s learning reveals that a genetically in?uenced roadmap for brain growth and a developmentally appropriate environment go hand in hand; the impact of each depends on the other.
+Let＊s see how temperament combines with brain development and experience, forming a complex, dynamic system that shapes the course of development.
+Let＊s see how temperament combines with brain development and experience, forming a complex, dynamic system that shapes the course of development.
+To chart the development of shy and sociable children, psychologist Jerome Kagan followed several hundred youngsters from infancy into the school years, repeatedly observing their behavior and measuring their physiological responses to highly stimulating, unfamiliar events.
+Shy and sociable children also require dierent adult interventions to promote exploration of their surroundings〞an activity that (as Piaget pointed out) is essential for optimal cognitive development.
+Finally, culture aects the likelihood that parents and teachers will respond to shy children in ways that foster their development.
+Environmental forces, from adult每child interaction to cultural values, join with heredity to aect the development of children with other temperamental dispositions as well.
+Throughout this book〞and especially in Chapter 5, which addresses the development of children with physical and mental disabilities〞we will see many more examples of these synergistic eects.
+Indeed, many eminent child development researchers have countered Harris＊s thesis.
+Furthermore, no conclusive evidence exists for the assertion that the most consequential environment for children＊s development is the peer group rather than the family.
+In fact, this overriding emphasis on peers as a source of positive development is itself a product of our culture.
+It leads parents, like Noah and Suzanne, who are on the cusp of a dramatic period of development in their 2-year-old son＊s life, to express grave doubts about their own importance.
+The central idea of sociocultural theory is that the child and his or her social surroundings join to provide direction to development; participation in social life guides and energizes the child＊s mastery of new, culturally adaptive skills.
+78 By the 1980s, many American psychologists and educators〞doubting the Piagetian view of development and desiring to account for wide variation in children＊s competencies〞embraced Vygotsky＊s ideas with enthusiasm.
+These undergo a natural course of development through direct contact with the environment during the ?rst two years of life, similar to the process of exploration and discovery described by Piaget.
+The milestones just cited are broad universals of development.
+This leads to a crucial change in development.
+The natural line of development makes closer contact with its surrounding social context, merges with it, and is transformed by it.
+Vygotsky emphasized that to understand children＊s development, it is necessary to understand the social situations adults devise for them.
+Because Vygotsky regarded language as the major bridge between our social and mental worlds, he viewed language acquisition as the most signi?cant milestone in children＊s cognitive development.
+The sociocultural vision is very dierent from behaviorism, which views development as directly imposed, or shaped, by external forces.
+The core lesson to be learned from our discussion so far is that development is a matter of children＊s genetic/biological potential undergoing a cultural metamorphosis, a process that cannot take place without parents and teachers as thoughtful and committed participants in children＊s lives.
+From the sociocultural perspective, parents and teachers are leaders in awakening children＊s minds and fostering their development; children are apprenticed to these experts.
+Vygotsky, who studied and wrote about children＊s development in Russia in the early twentieth century, was deeply interested in how interdependency〞children＊s close ties to their community〞can pave the way to competence and autonomy.
+An overwhelming consensus of research shows that sensitive caregiving〞responding to the baby＊s cries for physical care and stimulation promptly, consistently, and appropriately〞supports the development of a secure attachment relationship.
+To answer this question, Vygotsky proposed a special concept: the zone of proximal development.
+Keeping it in mind can help parents and teachers interact with children in ways that lead their development forward.
+Vygotsky de?ned the zone of proximal development as the distance between the child＊s actual development (the tasks the child can do individually) and the child＊s potential development, ※determined through problem solving under adult guidance or in collaboration with more capable peers.§
+Vygotsky de?ned the zone of proximal development as the distance between the child＊s actual development (the tasks the child can do individually) and the child＊s potential development, ※determined through problem solving under adult guidance or in collaboration with more capable peers.§
+Vygotsky de?ned the zone of proximal development as the distance between the child＊s actual development (the tasks the child can do individually) and the child＊s potential development, ※determined through problem solving under adult guidance or in collaboration with more capable peers.§
+Research documents several communicative ingredients that consistently foster development, in children of diverse ages and across a wide range of tasks.
+This joint attention to objects and events fosters early language development.
