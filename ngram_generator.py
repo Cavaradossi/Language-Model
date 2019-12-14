@@ -18,6 +18,7 @@ def ngram_generator(s, n):
     token = [token for token in s.split(" ") if token != ""]
 
     # Stemming and Lemmatizing
+    # 将句子中每个词变为原词形式输出由原形单词组成的句子数组存储在token中
     lemmatizer = WordNetLemmatizer()
     tagged = pos_tag(token)
     token = []
@@ -35,6 +36,7 @@ def ngram_generator(s, n):
     ngrams = zip(*[token[i:] for i in range(n)])
     return [" ".join(ngram) for ngram in ngrams]
 
+
 def get_wordnet_pos(tag):
     if tag.startswith('J'):
         return wordnet.ADJ
@@ -47,6 +49,6 @@ def get_wordnet_pos(tag):
     else:
         return None
 
-ngram = ngram_generator('I am a student working in the library', 3)
-print(ngram)
-input('press enter')
+# ngram = ngram_generator('I am a student working in the library', 3)
+# print(ngram)
+# input('press enter')
