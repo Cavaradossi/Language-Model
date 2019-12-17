@@ -1,6 +1,6 @@
-from common import *
 import numpy as np
 
+from common import *
 
 
 def add_one_smoothing(word2id,flist):
@@ -18,14 +18,14 @@ def add_one_smoothing(word2id,flist):
 
 
 def main():
-    flist = f_original_shape()
+    flist = f_original_shape('train_LM.txt')
     counter=generate_gram_list(flist)
     word2id=get_word2id(counter)
     unigram=get_unigram(counter)
     add_one=add_one_smoothing(word2id,flist)
     test_txt='i am working'
     test_pre=ngram_generator(test_txt,1)
-    res=prob(test_pre,word2id,unigram,add_one)  # test bigram 概率
+    res = prob_bigram(test_pre, word2id, unigram, add_one)  # test bigram 概率
     print(res)
 
 if __name__ == "__main__":
