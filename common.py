@@ -19,8 +19,6 @@ author:Zhu Jingwen
 9.计算test sentence bigram
 '''
 
-
-
 '''
 语料库预处理,将语料库按行读取(一行为一句),将所有词还原为原型,以句子列表形式输出
 输入:
@@ -38,15 +36,14 @@ i am a student\n
 
 
 def f_original_shape(file_name):
-    f_list=[]
+    f_list = []
     f = open(file_name, 'r', encoding='utf-8', errors='ignore')
     lines = f.readlines()
     f.close()
     for line in lines:
-        line=ngram_generator(line ,1)
+        line = ngram_generator(line, 1)
         f_list.append(line)
     return f_list
-
 
 
 '''
@@ -62,7 +59,6 @@ e.g.[('be', 4), ('\n', 3), ('a', 3), ('i', 2), ('fine', 1),...]
 
 
 def generate_counter_list(flist):
-
     counter = Counter()  # 词频统计
     for sentence in flist:
         for word in sentence:
@@ -78,6 +74,8 @@ def generate_counter_list(flist):
 输出:
 word2id:(word,id)
 '''
+
+
 def get_word2id(counter):
     lec = len(counter)  # counter中word的个数
     word2id = {counter[i][0]: i for i in range(lec)}  # {'的': 0, '很': 1, '菜': 2, '她': 3, '好': 4, '他': 5, '香': 6}
@@ -114,8 +112,6 @@ def get_bigram_times(word2id, flist):
     return bigram
 
 
-
-
 '''
 输入:word2id,预处理的文件f_list
 输出:bigram概率矩阵,举例
@@ -129,8 +125,10 @@ def get_bigram_times(word2id, flist):
   6.66666667e-02 6.66666667e-02 6.66666667e-02]
 ...]
 '''
-def get_bigram(word2id,flist):
-    lec=len(word2id)
+
+
+def get_bigram(word2id, flist):
+    lec = len(word2id)
     bigram = np.zeros((lec, lec)) + 1e-8
     for sentence in flist:
         sentence = [word2id[w] for w in sentence]
@@ -145,9 +143,12 @@ def get_bigram(word2id,flist):
 '''
 由counter得到训练数据的unigram概率1维数组
 '''
+
+
 def get_unigram(counter):
     unigram = np.array([i[1] for i in counter]) / sum(i[1] for i in counter)
     return unigram
+
 
 '''
 计算test sentence的unigram的概率
@@ -156,7 +157,9 @@ test_sentence,word2id,由训练data得到的unigram单词概率1维度数组
 输出
 p_unigram(test_sentence)
 '''
-def prob_unigram(sentence,word2id,unigram):
+
+
+def prob_unigram(sentence, word2id, unigram):
     s = [word2id[w] for w in sentence]  # 将句子编程id序列[wordid1,wordid2,wordid3,...]
     p = 1.00
     les = len(s)  # 句子单词个数
@@ -184,7 +187,7 @@ def prob_bigram(sentence, word2id, unigram, bigram):
         return 0
     # p = unigram[s[0]]
     if les < 2:  # 如果句子只有一个词,则值返回unigram计算结果
-        p = unigram[s[0]] # 对第一个词用unigram
+        p = unigram[s[0]]  # 对第一个词用unigram
         return p
     for i in range(1, les):  # 从第2个词开始和前一个两两组合的bigram值的乘积/如果是add_smoothing,则bigram值换成add_one矩阵代入即可
         p *= bigram[s[i - 1], s[i]]
@@ -195,18 +198,21 @@ def prob_bigram(sentence, word2id, unigram, bigram):
 使用举例
 通过训练数据得到test sentence的unigram句子概率和bigram句子概率
 '''
+
+
 def main():
     flist = f_original_shape('train_LM.txt')
     counter = generate_counter_list(flist)
-    word2id=get_word2id(counter)
-    unigram=get_unigram(counter)
-    bigram=get_bigram(word2id,flist)
-    test_txt='i am working'
-    test_pre=ngram_generator(test_txt,1)
+    word2id = get_word2id(counter)
+    unigram = get_unigram(counter)
+    bigram = get_bigram(word2id, flist)
+    test_txt = 'i am working'
+    test_pre = ngram_generator(test_txt, 1)
     res1 = prob_unigram(test_pre, word2id, unigram)  # test unigram概率
     res2 = prob_bigram(test_pre, word2id, unigram, bigram)  # test bigram 概率
     print(res1)
     print(res2)
+
 
 if __name__ == "__main__":
     main()

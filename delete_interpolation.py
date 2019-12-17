@@ -13,10 +13,12 @@ hist_num: 历史条件出现的次数
 Returns:
 new_p: 加值平滑后的词汇条件概率
 '''
-def add_smoothing(vocab_num, word_num, hist_num):
 
-    new_p = (word_num + 1)/(vocab_num + hist_num)
+
+def add_smoothing(vocab_num, word_num, hist_num):
+    new_p = (word_num + 1) / (vocab_num + hist_num)
     return new_p
+
 
 '''
 要点：具有相同历史的gram对应的参数λ相同，要先计算相同历史的gram出现的次数，然后计算概率乘积，对参数求偏导得到极值点
@@ -39,14 +41,14 @@ def delete_interpolation(gram_num, p_list, word2id):
         p_3gram_matrix = p_list[2]
         '''
 
-    with open('rest.txt','r') as f:
+    with open('rest.txt', 'r') as f:
         gram_list = generate_gram_list(f)
         corpus_p = cal_corpus_p(f)
         vocab_num = get_vocab_num(f)
     old_cross_entropy = -1
     new_cross_entropy = cross_entropy(vocab_num, corpus_p)
 
-    while(old_cross_entropy != new_cross_entropy):
+    while (old_cross_entropy != new_cross_entropy):
         old_cross_entropy = new_cross_entropy
         p_2gram_matrix = round(gram_list, p_1gram_matrix, p_2gram_matrix)
         new_cross_entropy = cross_entropy(corpus_p, p_2gram_matrix)
@@ -77,6 +79,7 @@ def get_p_2gram_matrix(f):
     bigram = get_bigram(word2id, flist)
 
     return bigram
+
 
 '''
 一轮参数更新
@@ -112,22 +115,23 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
         x = sympy.symbols("x")
         p_1gram = get_p_with_unigram(word, p_1gram_matrix, word2id)
         p_2gram = get_p_with_bigram(word1, word2, p_2gram_matrix, word2id)
-        p_new = x * p_1gram + (1-x) * p_2gram
+        p_new = x * p_1gram + (1 - x) * p_2gram
         p_case[history] = p_case[history] * pow(p_new, gram_count)
-        #p_3gram = get_p()
+        # p_3gram = get_p()
 
     for history in p_case:
         x_result = 0
         p_case_t = p_case[history].subs(x, x_result)
         difpx = sympy.diff(p_case[history], x)
-        t = sympy.solve(difpx,x)
+        t = sympy.solve(difpx, x)
         for x_candidate in t:
-            if  0 < x_candidate < 1 and p_case[history].subs(x, x_candidate) < p_case_t:
+            if 0 < x_candidate < 1 and p_case[history].subs(x, x_candidate) < p_case_t:
                 p_case_t = p_case[history].subs(x, x_candidate)
                 x_result = x_candidate
         p_2gram_matrix = update_gram_matrix_by_history(x_result, history, p_2gram_matrix, p_1gram_matrix)
 
     return p_2gram_matrix
+
 
 '''
 该函数计算数据集的bigram概率
@@ -162,6 +166,8 @@ f: 数据集文件
 Returns:
 vocab_num: 词汇数目
 '''
+
+
 def get_vocab_num(f):
     f_list = f_original_shape(f)
     list = generate_counter_list(f_list)
@@ -226,7 +232,6 @@ def get_p_with_bigram(word1, word2, bigram, word2id):
     return p
 
 
-
 '''
 input:f 语料文件
 Returns:
@@ -256,10 +261,6 @@ def generate_gram_list(f):
     return gram_list
 
 
-
-
-
-
 '''
 Inputs:
 vocab_num: 词汇数量
@@ -270,8 +271,9 @@ Returns: 交叉熵
 
 
 def cross_entropy(vocab_num, corpus_p):
-    cross_entropy = -(1/vocab_num) * math.log2(corpus_p)
+    cross_entropy = -(1 / vocab_num) * math.log2(corpus_p)
     return cross_entropy
+
 
 '''
 Inputs:
@@ -280,9 +282,10 @@ cross_entropy: 模型交叉熵
 Returns
 perplexity: 模型困惑度
 '''
-def perplexity(cross_entropy):
 
-    perplexity = 2**cross_entropy
+
+def perplexity(cross_entropy):
+    perplexity = 2 ** cross_entropy
     return perplexity
 
 
