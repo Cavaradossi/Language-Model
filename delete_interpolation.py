@@ -4,6 +4,7 @@ import sympy
 
 from common import *
 
+import sys
 '''
 Inputs: 
 vocab_num: 词汇数量
@@ -40,19 +41,27 @@ def delete_interpolation(gram_num, p_list, word2id):
         p_2gram_matrix = p_list[1]
         p_3gram_matrix = p_list[2]
         '''
-
-    with open('rest.txt', 'r') as f:
+    '''
+    with open('train_LM.txt', 'r') as f:
         gram_list = generate_gram_list(f)
         corpus_p = cal_corpus_p(f)
         vocab_num = get_vocab_num(f)
+    '''
+    f = 'train1.txt'
+    gram_list = generate_gram_list(f)
+    corpus_p = cal_corpus_p(f)
+    vocab_num = get_vocab_num(f)
     old_cross_entropy = -1
+    print(vocab_num)
+    print(corpus_p)
     new_cross_entropy = cross_entropy(vocab_num, corpus_p)
 
     while (old_cross_entropy != new_cross_entropy):
         old_cross_entropy = new_cross_entropy
-        p_2gram_matrix = round(gram_list, p_1gram_matrix, p_2gram_matrix)
-        new_cross_entropy = cross_entropy(corpus_p, p_2gram_matrix)
-
+        p_2gram_matrix = round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id)
+        corpus_p = cal_corpus_p(f)
+        new_cross_entropy = cross_entropy(vocab_num, corpus_p)
+        #new_cross_entropy = cross_entropy(corpus_p, p_2gram_matrix)
     return p_2gram_matrix
 
 
@@ -73,7 +82,7 @@ def get_p_1gram_matrix(f):
 
 
 def get_p_2gram_matrix(f):
-    flist = f_original_shape('train_LM.txt')
+    flist = f_original_shape(f)
     counter = generate_counter_list(flist)
     word2id = get_word2id(counter)
     bigram = get_bigram(word2id, flist)
@@ -97,38 +106,53 @@ p_2gram_matrix: 更新的bigram概率矩阵
 
 def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
     p_case = {}
-
+    percent_old = 0
     for i in range(len(gram_list)):
+        percent_new = int(i/len(gram_list) * 100)
+        if(percent_new != percent_old):
+            percent_old = percent_new
+            print('generating history%',percent_new,flush=True)
+        #sys.stdout.write("generating history")
+        #sys.stdout.write("%d/%d"%(i, len(gram_list))
+        #sys.stdout.flush()
         word1 = gram_list[i][0]
         word2 = gram_list[i][1]
         gram_count = gram_list[i][2]
-        '''
-        word = gram_split[2]
-        history2 = ' '.join(gram_split[0], gram_split[1])
-        history1 = gram_split[1]
-        '''
-        word = word2
-        history = word1
-        if history not in p_case:
-            p_case[history] = 1
+        if (gram_count != 0):
+            '''
+            word = gram_split[2]
+            history2 = ' '.join(gram_split[0], gram_split[1])
+            history1 = gram_split[1]
+            '''
+            word = word2
+            history = word1
+            if history not in p_case:
+                p_case[history] = 1
 
-        x = sympy.symbols("x")
-        p_1gram = get_p_with_unigram(word, p_1gram_matrix, word2id)
-        p_2gram = get_p_with_bigram(word1, word2, p_2gram_matrix, word2id)
-        p_new = x * p_1gram + (1 - x) * p_2gram
-        p_case[history] = p_case[history] * pow(p_new, gram_count)
-        # p_3gram = get_p()
+            x = sympy.symbols("x")
+            p_1gram = get_p_with_unigram(word, p_1gram_matrix, word2id)
+            p_2gram = get_p_with_bigram(word1, word2, p_2gram_matrix, word2id)
+            p_new = x * p_1gram + (1 - x) * p_2gram
+            p_case[history] = p_case[history] * pow(p_new, gram_count)
+            # p_3gram = get_p()
 
     for history in p_case:
+        print('ready to calculate')
         x_result = 0
         p_case_t = p_case[history].subs(x, x_result)
+        print('diffing')
         difpx = sympy.diff(p_case[history], x)
+        print('solving')
         t = sympy.solve(difpx, x)
         for x_candidate in t:
+            print('selecting')
             if 0 < x_candidate < 1 and p_case[history].subs(x, x_candidate) < p_case_t:
                 p_case_t = p_case[history].subs(x, x_candidate)
                 x_result = x_candidate
-        p_2gram_matrix = update_gram_matrix_by_history(x_result, history, p_2gram_matrix, p_1gram_matrix)
+        print('begin update\n')
+        #p_2gram_matrix = update_gram_matrix_by_history(x_result, history, p_2gram_matrix, p_1gram_matrix)
+        p_2gram_matrix = update_gram_matrix_by_history(x_result, word2id[history], p_2gram_matrix, p_1gram_matrix)
+        print('end update\n')
 
     return p_2gram_matrix
 
@@ -152,8 +176,10 @@ def cal_corpus_p(f):
     bigram = get_bigram(word2id, flist)
     bigram2 = get_bigram_times(word2id, flist)
     for element1, element2 in zip(bigram.flat, bigram2.flat):
-        element = element1 ** element2
-        data_p = element * data_p
+        element = element2 * math.log2(element1)
+        data_p = element + data_p
+        #element = element1 ** element2
+        #data_p = element * data_p
 
     return data_p
 
@@ -190,7 +216,10 @@ updated_gram_matrix: 更新过的gram概率矩阵
 
 def update_gram_matrix_by_history(x, history, p_2gram_matrix, p_1gram_matrix):
     p_2gram_matrix[history] = x * p_1gram_matrix + (1 - x) * p_2gram_matrix[history]
-
+    '''
+    for i in range(len(p_1gram_matrix)):
+        p_2gram_matrix[history][i] = x * p_1gram_matrix[i] + (1 - x) * p_2gram_matrix[history][i]
+    '''
     return p_2gram_matrix
 
 
@@ -247,9 +276,18 @@ def generate_gram_list(f):
     word2id = get_word2id(counter)
     id2word = get_id2word(word2id)
     unigram = get_unigram(counter)
-    bigram = get_bigram(word2id, flist)
+    #bigram = get_bigram(word2id, flist)
+
     lec = len(word2id)
-    gram_list = [[0 for col in range(2)] for row in range(lec * lec)]
+    bigram = np.zeros((lec, lec))
+    for sentence in flist:
+        sentence = [word2id[w] for w in sentence]
+        for i in range(1, len(sentence)):
+            bigram[[sentence[i - 1]], [sentence[i]]] += 1
+
+
+    lec = len(word2id)
+    gram_list = [[0 for col in range(3)] for row in range(lec * lec)]
     [rows, cols] = bigram.shape
     item = 0
     for i in range(rows):
@@ -257,6 +295,8 @@ def generate_gram_list(f):
             gram_list[item][0] = id2word[i]  # history
             gram_list[item][1] = id2word[j]  # word
             gram_list[item][2] = bigram[i, j]
+            #gram_list[item][2] = bigram[i][j]
+
             item = item + 1
     return gram_list
 
@@ -271,7 +311,8 @@ Returns: 交叉熵
 
 
 def cross_entropy(vocab_num, corpus_p):
-    cross_entropy = -(1 / vocab_num) * math.log2(corpus_p)
+    cross_entropy = -(1 / vocab_num) * corpus_p
+    #cross_entropy = -(1 / vocab_num) * math.log2(corpus_p)
     return cross_entropy
 
 
@@ -290,4 +331,13 @@ def perplexity(cross_entropy):
 
 
 if __name__ == "__main__":
-    delete_interpolation(0, 0)
+    f = 'train1.txt'
+    flist = f_original_shape(f)
+    counter = generate_counter_list(flist)
+    word2id = get_word2id(counter)
+    unigram = get_p_1gram_matrix(f)
+    bigram = get_p_2gram_matrix(f)
+    np.savetxt("old_bigram.txt", bigram,fmt='%f',delimiter=',')
+    p_list = [unigram, bigram]
+    bigram = delete_interpolation(2, p_list, word2id)
+    np.savetxt("new_bigram.txt", bigram,fmt='%f',delimiter=',')
