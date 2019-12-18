@@ -301,6 +301,16 @@ def generate_gram_list(f):
     return gram_list
 
 
+
+
+
+
+
+
+
+
+
+
 '''
 Inputs:
 vocab_num: 词汇数量

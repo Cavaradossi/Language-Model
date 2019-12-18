@@ -17,13 +17,13 @@ def add_one_smoothing(word2id, flist):
 
 def main():
     flist = f_original_shape('train_LM.txt')
-    counter = generate_gram_list(flist)
+    counter = generate_counter_list(flist)
     word2id = get_word2id(counter)
     unigram = get_unigram(counter)
     add_one = add_one_smoothing(word2id, flist)
     test_txt = 'i am working'
     test_pre = ngram_generator(test_txt, 1)
-    res = prob_bigram(test_pre, word2id, unigram, add_one)  # test bigram 概率
+    res = prob_bigram(test_pre, word2id, unigram, add_one)  # test bigram log 概率
     print(res)
 
 

@@ -3,6 +3,7 @@ from collections import Counter
 import numpy as np
 
 from ngram_generator import ngram_generator
+import math
 
 '''
 由train_data得到test_sentence的unigram概率和bigram概率
@@ -151,6 +152,7 @@ def get_unigram(counter):
 
 
 '''
+log
 计算test sentence的unigram的概率
 输入
 test_sentence,word2id,由训练data得到的unigram单词概率1维度数组
@@ -160,18 +162,30 @@ p_unigram(test_sentence)
 
 
 def prob_unigram(sentence, word2id, unigram):
-    s = [word2id[w] for w in sentence]  # 将句子编程id序列[wordid1,wordid2,wordid3,...]
-    p = 1.00
-    les = len(s)  # 句子单词个数
-    if les < 1:
+    lec=len(word2id)
+    if lec < 1:
         return 0
-    p = unigram[s[0]]
-    for i in range(1, les):
-        p *= unigram[s[i]]
+    p=0.00
+    for w in sentence:
+        if w in word2id:
+            p += math.log(unigram[word2id[w]],2)
+
+
     return p
+
+    # s = [word2id[w] for w in sentence]  # 将句子编程id序列[wordid1,wordid2,wordid3,...]
+    # p = 0
+    # les = len(s)  # 句子单词个数
+    # if les < 1:
+    #     return 0
+    # for i in range(0, les):
+    #     # p *= unigram[s[i]]
+    #     p += math.log(unigram[s[i]])
+    # return p
 
 
 """
+log结果
 输入
 test_sentence,word2id,由训练数据得到的所有单词概率的unigram向量,bigram矩阵
 输出
@@ -180,18 +194,86 @@ p_bigram(test_sentence)
 
 
 def prob_bigram(sentence, word2id, unigram, bigram):
-    s = [word2id[w] for w in sentence]  # 将句子编程id序列[wordid1,wordid2,wordid3,...]
-    p = 1.00
-    les = len(s)  # 句子单词个数
+    print(sentence)
+    #
+    # s = [word2id[w] for w in sentence]  # 将句子编程id序列[wordid1,wordid2,wordid3,...]
+    p = 0.00
+    les = len(sentence)  # 句子单词个数
     if les < 1:
         return 0
-    # p = unigram[s[0]]
     if les < 2:  # 如果句子只有一个词,则值返回unigram计算结果
-        p = unigram[s[0]]  # 对第一个词用unigram
+        # p = math.log(unigram[s[0]],2) # 对第一个词用unigram
+        p=prob_unigram(sentence,word2id,unigram)
         return p
-    for i in range(1, les):  # 从第2个词开始和前一个两两组合的bigram值的乘积/如果是add_smoothing,则bigram值换成add_one矩阵代入即可
-        p *= bigram[s[i - 1], s[i]]
+    for i in range(1,len(sentence)):
+        if sentence[i] and sentence[i-1] in word2id:
+            p += math.log(bigram[word2id[sentence[i - 1]], word2id[sentence[i]]], 2)
+    # for i in range(1, les):  # 从第2个词开始和前一个两两组合的bigram值的乘积/如果是add_smoothing,则bigram值换成add_one矩阵代入即可
+    #     p += math.log(bigram[s[i - 1], s[i]],2)
     return p
+
+
+'''得到整个测试集的概率'''
+def prob_bigram_T(test_filename,word2id,unigram,bigram):
+    f = open(test_filename, 'r', encoding='utf-8', errors='ignore')
+    lines = f.readlines()
+    f.close()
+    p=0
+    for line in lines:
+        line = ngram_generator(line, 1)
+        res2 = prob_bigram(line, word2id, unigram, bigram)
+        p+=math.log(res2,2)
+
+    return p
+
+
+'''
+该函数从数据集中返回词汇数目
+Inputs:
+f: 数据集文件
+
+Returns:
+vocab_num: 词汇数目
+'''
+
+
+def get_vocab_num(f):
+    f_list = f_original_shape(f)
+    list = generate_counter_list(f_list)
+    vocab_num = len(list)
+
+    return vocab_num
+
+
+
+'''
+Inputs:
+vocab_num: 词汇数量
+corpus_p: 整个测试集的概率
+
+Returns: 交叉熵
+'''
+
+
+def cross_entropy(vocab_num, log_corpus_p):
+    cross_entropy = -(1 / vocab_num) * log_corpus_p
+    return cross_entropy
+
+
+'''
+Inputs:
+cross_entropy: 模型交叉熵
+
+Returns
+perplexity: 模型困惑度
+'''
+
+
+def perplexity(cross_entropy):
+    perplexity = 2 ** cross_entropy
+    return perplexity
+
+
 
 
 '''
@@ -210,8 +292,11 @@ def main():
     test_pre = ngram_generator(test_txt, 1)
     res1 = prob_unigram(test_pre, word2id, unigram)  # test unigram概率
     res2 = prob_bigram(test_pre, word2id, unigram, bigram)  # test bigram 概率
-    print(res1)
-    print(res2)
+    cross_entropy_res=cross_entropy(3,res2)
+    pp=perplexity(cross_entropy_res)
+    print("unigram log概率:",res1)
+    print("bigram log概率:",res2)
+    print("bigram 困惑熵:",pp)
 
 
 if __name__ == "__main__":
