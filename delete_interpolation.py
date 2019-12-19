@@ -2,6 +2,8 @@ import math
 
 import sympy
 
+import scipy
+
 from common import *
 
 import sys
@@ -138,21 +140,50 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
 
     for history in p_case:
         print('ready to calculate')
+        #x_temp = 0
         x_result = 0
-        p_case_t = p_case[history].subs(x, x_result)
+        learning_rate = 0.1
+        #p_case_t = p_case[history].subs(x, 0)
+        x_list = []
+        p_list = []
         print('diffing')
         difpx = sympy.diff(p_case[history], x)
         print('solving')
+        '''
+        梯度下降法求最值
+        '''
+        for x_temp in range(1, 10):
+            x_temp = x_temp/10
+            x_max = x_temp
+            p_max = p_case[history].subs(x, 0)
+            while(1):
+                x_temp = x_temp + difpx.subs(x, x_temp) * learning_rate
+                p_temp = p_case[history].subs(x, x_temp)
+                if (x_temp < 0):
+                    x_temp = 0
+                elif (x_temp > 1):
+                    x_temp = 1
+                if (p_temp > p_max):
+                    x_max = x_temp
+                    p_max = p_temp
+                    continue
+                x_list.append(x_max)
+                p_list.append(p_max)
+                break
+        x_result = x_list[p_list.index(max(p_list))]
+        '''
+        此处尝试使用求导算极值，但是训练不出来
         t = sympy.solve(difpx, x)
         for x_candidate in t:
             print('selecting')
-            if 0 < x_candidate < 1 and p_case[history].subs(x, x_candidate) < p_case_t:
+            if 0 < x_candidate < 1 and p_case[history].subs(x, x_candidate) > p_case_t:
                 p_case_t = p_case[history].subs(x, x_candidate)
                 x_result = x_candidate
-        print('begin update\n')
+        '''
+        print('begin update')
         #p_2gram_matrix = update_gram_matrix_by_history(x_result, history, p_2gram_matrix, p_1gram_matrix)
         p_2gram_matrix = update_gram_matrix_by_history(x_result, word2id[history], p_2gram_matrix, p_1gram_matrix)
-        print('end update\n')
+        print('end update')
 
     return p_2gram_matrix
 
@@ -182,25 +213,6 @@ def cal_corpus_p(f):
         #data_p = element * data_p
 
     return data_p
-
-
-'''
-该函数从数据集中返回词汇数目
-Inputs:
-f: 数据集文件
-
-Returns:
-vocab_num: 词汇数目
-'''
-
-
-def get_vocab_num(f):
-    f_list = f_original_shape(f)
-    list = generate_counter_list(f_list)
-    vocab_num = len(list)
-
-    return vocab_num
-
 
 '''
 该函数以插值参数x更新gram概率矩阵
@@ -299,46 +311,6 @@ def generate_gram_list(f):
 
             item = item + 1
     return gram_list
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-Inputs:
-vocab_num: 词汇数量
-corpus_p: 整个测试集的概率
-
-Returns: 交叉熵
-'''
-
-
-def cross_entropy(vocab_num, corpus_p):
-    cross_entropy = -(1 / vocab_num) * corpus_p
-    #cross_entropy = -(1 / vocab_num) * math.log2(corpus_p)
-    return cross_entropy
-
-
-'''
-Inputs:
-cross_entropy: 模型交叉熵
-
-Returns
-perplexity: 模型困惑度
-'''
-
-
-def perplexity(cross_entropy):
-    perplexity = 2 ** cross_entropy
-    return perplexity
-
 
 if __name__ == "__main__":
     f = 'train1.txt'
