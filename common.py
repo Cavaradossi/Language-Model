@@ -206,7 +206,7 @@ def prob_bigram(sentence, word2id, unigram, bigram):
         p=prob_unigram(sentence,word2id,unigram)
         return p
     for i in range(1,len(sentence)):
-        if sentence[i] and sentence[i-1] in word2id:
+        if sentence[i] in word2id and sentence[i-1] in word2id:
             p += math.log(bigram[word2id[sentence[i - 1]], word2id[sentence[i]]], 2)
     # for i in range(1, les):  # 从第2个词开始和前一个两两组合的bigram值的乘积/如果是add_smoothing,则bigram值换成add_one矩阵代入即可
     #     p += math.log(bigram[s[i - 1], s[i]],2)
@@ -222,7 +222,8 @@ def prob_bigram_T(test_filename,word2id,unigram,bigram):
     for line in lines:
         line = ngram_generator(line, 1)
         res2 = prob_bigram(line, word2id, unigram, bigram)
-        p+=math.log(res2,2)
+        if res2 > 0:
+            p+=math.log(res2,2)
 
     return p
 

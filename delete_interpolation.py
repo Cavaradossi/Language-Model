@@ -34,7 +34,7 @@ p_2gram_matrix: 插值平滑一轮后的gram概率矩阵
 '''
 
 
-def delete_interpolation(gram_num, p_list, word2id):
+def delete_interpolation(gram_num, p_list, word2id, test_filename):
     p_1gram_matrix = p_list[0]
     if gram_num == 2:
         p_2gram_matrix = p_list[1]
@@ -49,9 +49,9 @@ def delete_interpolation(gram_num, p_list, word2id):
         corpus_p = cal_corpus_p(f)
         vocab_num = get_vocab_num(f)
     '''
-    f = 'train1.txt'
+    f = test_filename
     gram_list = generate_gram_list(f)
-    corpus_p = cal_corpus_p(f)
+    corpus_p = prob_bigram_T(f, word2id, p_1gram_matrix, p_2gram_matrix)
     vocab_num = get_vocab_num(f)
     old_cross_entropy = -1
     print(vocab_num)
@@ -61,7 +61,7 @@ def delete_interpolation(gram_num, p_list, word2id):
     while (old_cross_entropy != new_cross_entropy):
         old_cross_entropy = new_cross_entropy
         p_2gram_matrix = round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id)
-        corpus_p = cal_corpus_p(f)
+        corpus_p = prob_bigram_T(f, word2id, p_1gram_matrix, p_2gram_matrix)
         new_cross_entropy = cross_entropy(vocab_num, corpus_p)
         #new_cross_entropy = cross_entropy(corpus_p, p_2gram_matrix)
     return p_2gram_matrix
@@ -114,12 +114,11 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
         if(percent_new != percent_old):
             percent_old = percent_new
             print('generating history%',percent_new,flush=True)
-        #sys.stdout.write("generating history")
-        #sys.stdout.write("%d/%d"%(i, len(gram_list))
-        #sys.stdout.flush()
         word1 = gram_list[i][0]
         word2 = gram_list[i][1]
         gram_count = gram_list[i][2]
+        if word1 not in word2id or word2 not in word2id:
+            continue
         if (gram_count != 0):
             '''
             word = gram_split[2]
@@ -135,7 +134,8 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
             p_1gram = get_p_with_unigram(word, p_1gram_matrix, word2id)
             p_2gram = get_p_with_bigram(word1, word2, p_2gram_matrix, word2id)
             p_new = x * p_1gram + (1 - x) * p_2gram
-            p_case[history] = p_case[history] * pow(p_new, gram_count)
+            #p_case[history] = p_case[history] * pow(p_new, gram_count)
+            p_case[history] = p_case[history] * gram_count * sympy.log(p_new)
             # p_3gram = get_p()
 
     for history in p_case:
@@ -158,11 +158,11 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
             p_max = p_case[history].subs(x, 0)
             while(1):
                 x_temp = x_temp + difpx.subs(x, x_temp) * learning_rate
-                p_temp = p_case[history].subs(x, x_temp)
                 if (x_temp < 0):
                     x_temp = 0
                 elif (x_temp > 1):
                     x_temp = 1
+                p_temp = p_case[history].subs(x, x_temp)
                 if (p_temp > p_max):
                     x_max = x_temp
                     p_max = p_temp
@@ -186,33 +186,6 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
         print('end update')
 
     return p_2gram_matrix
-
-
-'''
-该函数计算数据集的bigram概率
-Inputs:
-f: 数据集文件
-
-Returns:
-data_p: 数据集的概率
-'''
-
-
-def cal_corpus_p(f):
-    data_p = 1.00
-    flist = f_original_shape(f)
-    counter = generate_counter_list(flist)
-    word2id = get_word2id(counter)
-    unigram = get_unigram(counter)
-    bigram = get_bigram(word2id, flist)
-    bigram2 = get_bigram_times(word2id, flist)
-    for element1, element2 in zip(bigram.flat, bigram2.flat):
-        element = element2 * math.log2(element1)
-        data_p = element + data_p
-        #element = element1 ** element2
-        #data_p = element * data_p
-
-    return data_p
 
 '''
 该函数以插值参数x更新gram概率矩阵
@@ -313,7 +286,8 @@ def generate_gram_list(f):
     return gram_list
 
 if __name__ == "__main__":
-    f = 'train1.txt'
+    f = 'train'
+    test_filename = 'test'
     flist = f_original_shape(f)
     counter = generate_counter_list(flist)
     word2id = get_word2id(counter)
@@ -321,5 +295,5 @@ if __name__ == "__main__":
     bigram = get_p_2gram_matrix(f)
     np.savetxt("old_bigram.txt", bigram,fmt='%f',delimiter=',')
     p_list = [unigram, bigram]
-    bigram = delete_interpolation(2, p_list, word2id)
+    bigram = delete_interpolation(2, p_list, word2id, test_filename)
     np.savetxt("new_bigram.txt", bigram,fmt='%f',delimiter=',')
