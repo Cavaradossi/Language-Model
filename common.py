@@ -1,5 +1,4 @@
 from collections import Counter
-
 import numpy as np
 
 from ngram_generator import ngram_generator
@@ -194,7 +193,6 @@ p_bigram(test_sentence)
 
 
 def prob_bigram(sentence, word2id, unigram, bigram):
-    print(sentence)
     #
     # s = [word2id[w] for w in sentence]  # 将句子编程id序列[wordid1,wordid2,wordid3,...]
     p = 0.00
@@ -222,8 +220,7 @@ def prob_bigram_T(test_filename,word2id,unigram,bigram):
     for line in lines:
         line = ngram_generator(line, 1)
         res2 = prob_bigram(line, word2id, unigram, bigram)
-        if res2 > 0:
-            p+=math.log(res2,2)
+        p+=res2
 
     return p
 
@@ -240,8 +237,11 @@ vocab_num: 词汇数目
 
 def get_vocab_num(f):
     f_list = f_original_shape(f)
-    list = generate_counter_list(f_list)
-    vocab_num = len(list)
+    vocab_num=0
+    for sentence in f_list:
+        vocab_num-=1  # 计算中每个句子多了一个结尾符号,所以每句话都-1
+        for w in sentence:
+            vocab_num+=1
 
     return vocab_num
 
@@ -284,20 +284,27 @@ def perplexity(cross_entropy):
 
 
 def main():
+
     flist = f_original_shape('train_LM.txt')
     counter = generate_counter_list(flist)
     word2id = get_word2id(counter)
     unigram = get_unigram(counter)
     bigram = get_bigram(word2id, flist)
-    test_txt = 'i am working'
-    test_pre = ngram_generator(test_txt, 1)
-    res1 = prob_unigram(test_pre, word2id, unigram)  # test unigram概率
-    res2 = prob_bigram(test_pre, word2id, unigram, bigram)  # test bigram 概率
-    cross_entropy_res=cross_entropy(3,res2)
-    pp=perplexity(cross_entropy_res)
-    print("unigram log概率:",res1)
-    print("bigram log概率:",res2)
-    print("bigram 困惑熵:",pp)
+    test_txt='test_LM.txt'
+    res_T=prob_bigram_T(test_txt,word2id,unigram,bigram)
+    print(test_txt,"log概率:",res_T)
+
+
+    # test_txt = 'i am working'
+    # test_pre = ngram_generator(test_txt, 1)
+    # print("方法2:",test_pre)
+    # res1 = prob_unigram(test_pre, word2id, unigram)  # test unigram概率
+    # res2 = prob_bigram(test_pre, word2id, unigram, bigram)  # test bigram 概率
+    # cross_entropy_res=cross_entropy(3,res2)
+    # pp=perplexity(cross_entropy_res)
+    # print("unigram log概率:",res1)
+    # print("bigram log概率:",res2)
+    # print("bigram 困惑熵:",pp)
 
 
 if __name__ == "__main__":

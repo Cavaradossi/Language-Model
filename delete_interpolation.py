@@ -54,8 +54,8 @@ def delete_interpolation(gram_num, p_list, word2id, test_filename):
     corpus_p = prob_bigram_T(f, word2id, p_1gram_matrix, p_2gram_matrix)
     vocab_num = get_vocab_num(f)
     old_cross_entropy = -1
-    print(vocab_num)
-    print(corpus_p)
+    # print(vocab_num)
+    # print(corpus_p)
     new_cross_entropy = cross_entropy(vocab_num, corpus_p)
 
     while (old_cross_entropy != new_cross_entropy):
@@ -113,7 +113,7 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
         percent_new = int(i/len(gram_list) * 100)
         if(percent_new != percent_old):
             percent_old = percent_new
-            print('generating history%',percent_new,flush=True)
+            # print('generating history%',percent_new,flush=True)
         word1 = gram_list[i][0]
         word2 = gram_list[i][1]
         gram_count = gram_list[i][2]
@@ -139,16 +139,16 @@ def round(gram_list, p_1gram_matrix, p_2gram_matrix, word2id):
             # p_3gram = get_p()
 
     for history in p_case:
-        print('ready to calculate')
+        # print('ready to calculate')
         #x_temp = 0
         x_result = 0
         learning_rate = 0.1
         #p_case_t = p_case[history].subs(x, 0)
         x_list = []
         p_list = []
-        print('diffing')
+        # print('diffing')
         difpx = sympy.diff(p_case[history], x)
-        print('solving')
+        # print('solving')
         '''
         梯度下降法求最值
         '''
@@ -286,9 +286,10 @@ def generate_gram_list(f):
     return gram_list
 
 if __name__ == "__main__":
-    f = 'train'
-    test_filename = 'test'
+    f = 'train.txt'
+    test_filename = 'test.txt'
     flist = f_original_shape(f)
+    num=get_vocab_num(f)
     counter = generate_counter_list(flist)
     word2id = get_word2id(counter)
     unigram = get_p_1gram_matrix(f)
@@ -297,3 +298,8 @@ if __name__ == "__main__":
     p_list = [unigram, bigram]
     bigram = delete_interpolation(2, p_list, word2id, test_filename)
     np.savetxt("new_bigram.txt", bigram,fmt='%f',delimiter=',')
+
+    res_T=prob_bigram_T(test_filename,word2id,unigram,bigram)
+    cross_entropy_res=cross_entropy(num,res_T)
+    pp=perplexity(cross_entropy_res)
+    print(test_filename,"的困惑熵:",pp)
