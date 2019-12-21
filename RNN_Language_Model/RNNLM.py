@@ -115,6 +115,9 @@ class RNNLM(object):
         # To compute the logits
         logits = tf.map_fn(output_embedding, outputs)
         logits = tf.reshape(logits, [-1, vocab_size])
+
+        self.prob = tf.nn.softmax(logits)
+
         loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=tf.reshape(self.output_batch, [-1]), logits=logits) \
                * tf.cast(tf.reshape(non_zero_weights, [-1]), tf.float32)
 
@@ -208,12 +211,14 @@ class RNNLM(object):
 
                 raw_line = raw_line.strip()
 
-                _dev_loss, _dev_valid_words, input_line = sess.run(
-                    [self.loss, self.valid_words, self.input_batch],
+                _dev_loss, _dev_valid_words, _prob, input_line, = sess.run(
+                    [self.loss, self.valid_words, self.prob, self.input_batch],
                     {self.dropout_rate: 1.0})
 
                 dev_loss = np.sum(_dev_loss)
                 dev_valid_words = _dev_valid_words
+
+                prob = _prob
 
                 global_dev_loss += dev_loss
                 global_dev_valid_words += dev_valid_words
@@ -222,6 +227,11 @@ class RNNLM(object):
                     dev_loss /= dev_valid_words
                     dev_ppl = math.exp(dev_loss)
                     print (raw_line + "    Test PPL: {}".format(dev_ppl))
+                    #print ('prob: {}'.format(prob))
+                    np.savetxt("log/prob_result", prob, delimiter=',')
+                    with open("log/ppl_result",'w') as pr:
+                        pr.write(str(dev_ppl))
+                    #np.savetxt("log/ppl_result", dev_ppl, delimiter=',')
 
             global_dev_loss /= global_dev_valid_words
             global_dev_ppl = math.exp(global_dev_loss)
