@@ -79,6 +79,8 @@ word2id:(word,id)
 def get_word2id(counter):
     lec = len(counter)  # counter中word的个数
     word2id = {counter[i][0]: i for i in range(lec)}  # {'的': 0, '很': 1, '菜': 2, '她': 3, '好': 4, '他': 5, '香': 6}
+    with open("smooth_word2id.txt", 'w+') as fw:
+        fw.write(str(word2id))
     return word2id
 
 
@@ -205,7 +207,8 @@ def prob_bigram(sentence, word2id, unigram, bigram):
         return p
     for i in range(1,len(sentence)):
         if sentence[i] in word2id and sentence[i-1] in word2id:
-            p += math.log(bigram[word2id[sentence[i - 1]], word2id[sentence[i]]], 2)
+            if bigram[word2id[sentence[i - 1]], word2id[sentence[i]]]>0:
+              p += math.log(bigram[word2id[sentence[i - 1]], word2id[sentence[i]]], 2)
     # for i in range(1, les):  # 从第2个词开始和前一个两两组合的bigram值的乘积/如果是add_smoothing,则bigram值换成add_one矩阵代入即可
     #     p += math.log(bigram[s[i - 1], s[i]],2)
     return p
@@ -277,6 +280,36 @@ def perplexity(cross_entropy):
 
 
 
+def if_equal_one(file_name):
+    f = open(file_name, 'r', encoding='utf-8', errors='ignore')
+    lines = f.readlines()
+    for line in lines:
+        line=line.split(",")
+        sum=0
+        for i in line:
+            sum+=float(i)
+        print(sum)
+
+    return 0
+
+
+def gramtxt_matrix(gramfile):
+    f = open(gramfile, 'r', encoding='utf-8', errors='ignore')
+    lines = f.readlines()
+    lec=len(lines)
+    gram_matrix=np.zeros((lec, lec))
+    i=0
+    for line in lines:
+        line = line.split(",")
+        j=0
+        for item in line:
+            gram_matrix[i][j]=float(item.strip())+1e-6
+            j+=1
+
+        i+=1
+
+    return gram_matrix
+
 '''
 使用举例
 通过训练数据得到test sentence的unigram句子概率和bigram句子概率
@@ -285,14 +318,18 @@ def perplexity(cross_entropy):
 
 def main():
 
-    flist = f_original_shape('train_LM.txt')
+    file_name='train.txt'
+    # if_equal_one(file_name)
+    # print(gramtxt_matrix(file_name))
+
+    flist = f_original_shape(file_name)
     counter = generate_counter_list(flist)
     word2id = get_word2id(counter)
-    unigram = get_unigram(counter)
-    bigram = get_bigram(word2id, flist)
-    test_txt='test_LM.txt'
-    res_T=prob_bigram_T(test_txt,word2id,unigram,bigram)
-    print(test_txt,"log概率:",res_T)
+    # unigram = get_unigram(counter)
+    # bigram = get_bigram(word2id, flist)
+    # test_txt='test_LM.txt'
+    # res_T=prob_bigram_T(test_txt,word2id,unigram,bigram)
+    # print(test_txt,"log概率:",res_T)
 
 
     # test_txt = 'i am working'
