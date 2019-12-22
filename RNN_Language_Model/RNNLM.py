@@ -207,6 +207,9 @@ class RNNLM(object):
             global_dev_loss = 0.0
             global_dev_valid_words = 0
 
+            content = ''
+            content_p = np.array([])
+
             for raw_line in fp.readlines():
 
                 raw_line = raw_line.strip()
@@ -220,6 +223,8 @@ class RNNLM(object):
 
                 prob = _prob
 
+                content_p = np.append(content_p, prob)
+
                 global_dev_loss += dev_loss
                 global_dev_valid_words += dev_valid_words
 
@@ -228,11 +233,12 @@ class RNNLM(object):
                     dev_ppl = math.exp(dev_loss)
                     print (raw_line + "    Test PPL: {}".format(dev_ppl))
                     #print ('prob: {}'.format(prob))
-                    np.savetxt("log/prob_result", prob, delimiter=',')
-                    with open("log/ppl_result",'w') as pr:
-                        pr.write(str(dev_ppl))
-                    #np.savetxt("log/ppl_result", dev_ppl, delimiter=',')
-
+                    content += raw_line + "    Test PPL:" + str(dev_ppl) + '\n'
+            if verbose:
+                content_p = content_p.reshape(-1, self.vocab_size)
+                with open("log/ppl_result",'w') as pr:
+                        pr.write(str(content))
+                np.savetxt("log/prob_result", content_p, delimiter=',')
             global_dev_loss /= global_dev_valid_words
             global_dev_ppl = math.exp(global_dev_loss)
             print ("Global Test PPL: {}".format(global_dev_ppl))
