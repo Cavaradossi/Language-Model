@@ -280,8 +280,8 @@ def generate_gram_list(f):
     return gram_list
 
 if __name__ == "__main__":
-    f = 'train'
-    test_filename = 'test'
+    f = 'train.txt'
+    test_filename = 'test.txt'
     flist = f_original_shape(f)
     num=get_vocab_num(test_filename)
     counter = generate_counter_list(flist)
