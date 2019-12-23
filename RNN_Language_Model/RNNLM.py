@@ -242,4 +242,5 @@ class RNNLM(object):
             global_dev_loss /= global_dev_valid_words
             global_dev_ppl = math.exp(global_dev_loss)
             print ("Global Test PPL: {}".format(global_dev_ppl))
+            return dev_ppl
 

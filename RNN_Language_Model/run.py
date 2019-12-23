@@ -1,5 +1,8 @@
 from data_prepare import gen_vocab
 from data_prepare import gen_id_seqs
+
+from data_prepare import gen_id_seqs_sentence
+
 from RNNLM import RNNLM
 import os
 
@@ -16,6 +19,8 @@ VERBOSE = True
 
 # To indicate your test corpus
 test_file = "./gap_filling_exercise/gap_filling_exercise"
+#gen_id_seqs(test_file)
+
 #test_file = "./gap_filling_exercise/test"
 
 if not os.path.isfile("data/vocab"):
@@ -52,23 +57,41 @@ def create_model(sess):
     sess.run(tf.global_variables_initializer())
     return model
 
-if TRAIN:
+def test(predict_sentence):
+    with open(test_file,'w') as f:
+        f.write(predict_sentence)
+    gen_id_seqs(test_file)
+
+    tf.reset_default_graph()
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.35)
     with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
         model = create_model(sess)
-
         saver = tf.train.Saver()
+        saver.restore(sess, "model/best_model.ckpt")
+        predict_id_file = os.path.join("data", test_file.split("/")[-1]+".ids")
+        if not os.path.isfile(predict_id_file):
+            gen_id_seqs(test_file)
+        ppl = model.predict(sess, predict_id_file, test_file, verbose=VERBOSE)
+    return ppl
 
-        model.batch_train(sess, saver)
+if __name__ == "__main__":
+    if TRAIN:
+        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.35)
+        with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
+            model = create_model(sess)
 
-tf.reset_default_graph()
-gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.35)
-with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
-    model = create_model(sess)
-    saver = tf.train.Saver()
-    saver.restore(sess, "model/best_model.ckpt")
-    predict_id_file = os.path.join("data", test_file.split("/")[-1]+".ids")
-    if not os.path.isfile(predict_id_file):
-        gen_id_seqs(test_file)
-    model.predict(sess, predict_id_file, test_file, verbose=VERBOSE)
+            saver = tf.train.Saver()
 
+            model.batch_train(sess, saver)
+
+    gen_id_seqs(test_file)
+    tf.reset_default_graph()
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.35)
+    with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
+        model = create_model(sess)
+        saver = tf.train.Saver()
+        saver.restore(sess, "model/best_model.ckpt")
+        predict_id_file = os.path.join("data", test_file.split("/")[-1]+".ids")
+        if not os.path.isfile(predict_id_file):
+            gen_id_seqs(test_file)
+        model.predict(sess, predict_id_file, test_file, verbose=VERBOSE)
