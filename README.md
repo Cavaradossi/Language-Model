@@ -4,20 +4,20 @@
 
 
 ## smooth.py
-author: 卢裕铭
-实现了几个平滑方法的2gram模型，包括：古德-图灵平滑、Katz平滑、绝对减值平滑、
-线性减值平滑、Kneser-Ney平滑
+author: 卢裕铭  
+实现了几个平滑方法的2gram模型，包括：古德-图灵平滑、Katz平滑、绝对减值平滑、线性减值平滑、Kneser-Ney平滑
 
 ## Kneser_Ney_ngram.py
-author: 卢裕铭
+author: 卢裕铭  
 实现了ngram的Kneser-Ney平滑
 
 ## jisuan.py
-author: 卢裕铭
+author: 卢裕铭  
 网页后端访问该文件时读取数据，计算结果
 
 ## delete interpolation
 author:王齐茁
+  
 直接调用delete_interpolation.py即可。
 本方法将使用train.txt生成初始数据，使用test.txt更新参数
 运行后会生成bigram概率矩阵，结果存放在new_bigram.txt
@@ -25,6 +25,7 @@ author:王齐茁
 
 ## RNN_Language_Model
 author:王齐茁
+  
 直接调用run.py将对ptb/test进行测试
 运行后困惑度结果存放在log/ppl_result，预测词概率结果存放在log/prob_result
 将run.py中参数TRAIN设置为True可使用ptb/train进行训练
@@ -126,7 +127,7 @@ run common.py
 
 author:朱靖雯
 
-### 运行示例
+运行示例
 ```
 run add_smoothing.py
 ```
