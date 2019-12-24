@@ -1,8 +1,6 @@
 from data_prepare import gen_vocab
 from data_prepare import gen_id_seqs
 
-from data_prepare import gen_id_seqs_sentence
-
 from RNNLM import RNNLM
 import os
 
