@@ -82,6 +82,7 @@ if __name__ == "__main__":
 
             model.batch_train(sess, saver)
 
+    test_file = "./ptb/test"
     gen_id_seqs(test_file)
     tf.reset_default_graph()
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.35)
