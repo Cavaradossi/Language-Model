@@ -325,11 +325,11 @@ def main():
     flist = f_original_shape(file_name)
     counter = generate_counter_list(flist)
     word2id = get_word2id(counter)
-    # unigram = get_unigram(counter)
-    # bigram = get_bigram(word2id, flist)
-    # test_txt='test_LM.txt'
-    # res_T=prob_bigram_T(test_txt,word2id,unigram,bigram)
-    # print(test_txt,"log概率:",res_T)
+    unigram = get_unigram(counter)
+    bigram = get_bigram(word2id, flist)
+    test_txt='test.txt'
+    res_T=prob_bigram_T(test_txt,word2id,unigram,bigram)
+    print(test_txt,"log概率:",res_T)
 
 
     # test_txt = 'i am working'
